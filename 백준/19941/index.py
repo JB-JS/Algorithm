@@ -1,13 +1,15 @@
 N, K = map(int, input().split())
-location = list(input())
-cnt = 0
+array = list(input())
+result = 0
 
-for i in range(N):
-    if location[i] == 'P':
-        for j in range(max(i-K, 0), min(i+K+1, N)):
-            if location[j] == 'H':
-                location[j] = 0
-                cnt += 1
-                break
+visited = [0] * len(array)
 
-print(cnt)
+for i in range(len(array)):
+  if array[i] == 'P':
+    
+    for j in range(max(i - K, 0), min(i + K + 1, len(array))):
+      if array[j] == 'H':
+        visited[j] = 1
+        break
+      
+print(len(list(filter(lambda x : x == 1, visited))))
